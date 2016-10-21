@@ -8,8 +8,10 @@
     "test:watch": "jest --watch"
   },
   "dependencies": {
+    "native-base": "^0.5.9",
     "react": "15.3.2",
-    "react-native": "0.34.1"
+    "react-native": "0.34.1",
+    "react-native-vector-icons": "^2.1.0"
   },
   "devDependencies": {
     "babel-jest": "^15.0.0",
@@ -18,7 +20,7 @@
     "jest-react-native": "^15.0.0",
     "react-test-renderer": "^15.3.2"
   },
-  "jest" : {
+  "jest": {
     "preset": "jest-react-native"
   }
 }

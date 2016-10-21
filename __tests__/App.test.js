@@ -10,7 +10,6 @@ describe('App', () => {
       <App />
     ).toJSON();
   
-    expect(tree.children[0].children[0]).toBe('Hello');
     expect(tree).toMatchSnapshot();
   });
 });
