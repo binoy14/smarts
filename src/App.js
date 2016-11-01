@@ -7,21 +7,18 @@ import {
   Button,
   Icon
 } from "native-base";
-
+import Dimensions from "Dimensions";
 import {
 	Text,
 	StyleSheet,
 } from "react-native";
 
 import {Weather, Calendar, News} from "./components";
+import {Grid, Col} from "react-native-easy-grid";
+
 
 const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		justifyContent: 'center',
-		alignItems: 'center',
-		backgroundColor: '#F5FCFF',
-	},
+
 });
 
 export default class App extends Component {
@@ -54,28 +51,32 @@ export default class App extends Component {
 
     switch(activeScene) {
       case 0:
-        this.showNews();
+        this.showWeather();
         break;
       case 1:
         this.showCalendar();
         break;
       case 2:
-        this.showWeather();
+        this.showNews();
         break;
     }
 
     return (
       <Container style={styles.container}>
-        <Content>
-          {this.scene}
-        </Content>
+          <Content>
+            <Grid>
+              <Col style={{backgroundColor: '#FF6445', height: Dimensions.get('window').height}}>
+                {this.scene}
+              </Col>
+            </Grid>
+          </Content>
         <Footer>
           <FooterTab>
             <Button 
               active={(activeScene === 0) ? true : false} 
               onPress={() => { this.setState({activeScene: 0})}}>
-                News
-              <Icon name="md-book" size={30} color="#900" />
+                Weather
+              <Icon name="md-sunny" size={30} color="#900" />
             </Button>
             <Button 
               active={(activeScene === 1) ? true : false} 
@@ -87,7 +88,7 @@ export default class App extends Component {
               active={(activeScene === 2) ? true : false} 
               onPress={() => { this.setState({activeScene: 2})}}>
                 Weather
-              <Icon name="md-sunny" size={30} color="#900" />
+              <Icon name="md-book" size={30} color="#900" />
             </Button>
           </FooterTab>
         </Footer>
