@@ -8,6 +8,7 @@
     "test:watch": "jest --watch"
   },
   "dependencies": {
+    "axios": "^0.15.2",
     "moment": "^2.15.2",
     "native-base": "^0.5.9",
     "react": "15.3.2",

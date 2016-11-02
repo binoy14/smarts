@@ -87,7 +87,7 @@ export default class App extends Component {
             <Button 
               active={(activeScene === 2) ? true : false} 
               onPress={() => { this.setState({activeScene: 2})}}>
-                Weather
+                News
               <Icon name="md-book" size={30} color="#900" />
             </Button>
           </FooterTab>

@@ -3,7 +3,8 @@ import React, {Component} from "react";
 import {
   StyleSheet,
   View,
-  Text
+  Text,
+  Image,
 } from "react-native";
 import {Grid, Col, Row} from "react-native-easy-grid";
 import moment from "moment";
@@ -53,15 +54,18 @@ const styles = StyleSheet.create({
     ...shadow,
     fontSize: 80,
     color: '#FFFCB8',
-    fontWeight: "700"
+    fontWeight: "700",
+    textAlign: 'center',
   },
   warningText: {
     fontSize: 50,
     color: '#FFFCB8',
-    fontWeight: "700"
+    fontWeight: "700",
+    textAlign: 'center',
   },
   weatherContainer: {
     marginLeft: 50,
+    marginTop: 50,
   },
   timeContainer: {
     marginTop: 80
@@ -88,14 +92,13 @@ const styles = StyleSheet.create({
   bottomWeatherDay: {
     ...bottomTextStyles,
     fontSize: 40,
-
   },
   bottomWeatherInfoWrapper: {
-    flexDirection: "row"
+    flexDirection: "row",
+    marginTop: 20,
   },
   bottomWeatherTextWrapper: {
-    margin: 20,
-    marginLeft: 40,
+    marginTop: 20,
   }
 });
 
@@ -103,7 +106,7 @@ const BottomWeatherComponent = () => (
   <View>
     <Text style={styles.bottomWeatherDay}>Friday</Text>
     <View style={styles.bottomWeatherInfoWrapper}>
-      <Icon name="ios-cloud" style={styles.bottomWeatherIcon}/>
+      <Image source={require("../../assets/cloud.png")} style={{width: 210, height: 155}} />
       <View style={styles.bottomWeatherTextWrapper}>
         <Text style={styles.bottomWeatherInfoTextTemp}>
           75°F
@@ -143,10 +146,10 @@ export class Weather extends Component {
   render() {
     return (
       <Grid>
-        <Row size={65}>
+        <Row size={60}>
           <Col size={40}>
             <View style={styles.weatherContainer}>
-              <Icon name="ios-cloud" style={styles.mainIcon} />
+              <Image source={require("../../assets/cloud.png")} style={{width: 280, height: 200}} />
               <View>
                 <Text style={styles.tempText}>
                   75°F
@@ -168,7 +171,7 @@ export class Weather extends Component {
             </View>
           </Col>
         </Row>
-        <Row size={35}>
+        <Row size={40}>
           <Col style={styles.bottomWeatherCols}>
             <BottomWeatherComponent />
           </Col>
