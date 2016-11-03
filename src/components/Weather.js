@@ -102,17 +102,17 @@ const styles = StyleSheet.create({
   },
 });
 
-const BottomWeatherComponent = () => (
+const BottomWeatherComponent = ({ day, temperature, rain }) => (
   <View>
-    <Text style={styles.bottomWeatherDay}>Friday</Text>
+    <Text style={styles.bottomWeatherDay}>{day}</Text>
     <View style={styles.bottomWeatherInfoWrapper}>
       <Image source={require('../../assets/cloud.png')} style={{ width: 210, height: 155 }} />
       <View style={styles.bottomWeatherTextWrapper}>
         <Text style={styles.bottomWeatherInfoTextTemp}>
-          75°F
+          {temperature}
         </Text>
         <Text style={styles.bottomWeatherInfoTextWarning}>
-          60% Rain
+          {rain} Rain
         </Text>
       </View>
     </View>
