@@ -173,13 +173,13 @@ export class Weather extends Component {
         </Row>
         <Row size={40}>
           <Col style={styles.bottomWeatherCols}>
-            <BottomWeatherComponent />
+            <BottomWeatherComponent day={moment().add(1, 'day').format('dddd')} />
           </Col>
           <Col style={styles.bottomWeatherCols}>
-            <BottomWeatherComponent />
+            <BottomWeatherComponent day={moment().add(2, 'day').format('dddd')} />
           </Col>
           <Col style={styles.bottomWeatherCols}>
-            <BottomWeatherComponent />
+            <BottomWeatherComponent day={moment().add(3, 'day').format('dddd')} />
           </Col>
         </Row>
       </Grid>
