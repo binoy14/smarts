@@ -110,10 +110,10 @@ const BottomWeatherComponent = ({ day, temperature, rain }) => (
       <Image source={require('../../assets/cloud.png')} style={{ width: 210, height: 155 }} />
       <View style={styles.bottomWeatherTextWrapper}>
         <Text style={styles.bottomWeatherInfoTextTemp}>
-          {temperature}
+          {temperature}°F
         </Text>
         <Text style={styles.bottomWeatherInfoTextWarning}>
-          {rain} Rain
+          {rain}% Rain
         </Text>
       </View>
     </View>
