@@ -8,7 +8,8 @@ import {
 } from 'react-native';
 import { Grid, Col, Row } from 'react-native-easy-grid';
 import moment from 'moment';
-import { Icon } from 'native-base';
+import { Icon, Spinner } from 'native-base';
+import getForecast from '../forecast';
 
 const shadow = {
   textShadowOffset: {
@@ -123,6 +124,7 @@ export class Weather extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      forecast: [],
       time: moment().format('LT'),
       date: `${moment().format('dddd')}, ${moment().format('LL')}`,
     };
@@ -135,6 +137,13 @@ export class Weather extends Component {
   }
 
   componentDidMount() {
+    getForecast()
+      .then((forecast) => {
+        console.log(forecast);
+        this.setState({ forecast });
+      })
+      .catch(error => console.error(error));
+
     this.timeoutFunction = setInterval(() => {
       this.setState({
         time: moment().format('LT'),
@@ -144,6 +153,10 @@ export class Weather extends Component {
   }
 
   render() {
+    if (this.state.forecast.length === 0) {
+      return <Spinner color="yellow" />;
+    }
+
     return (
       <Grid>
         <Row size={60}>
@@ -152,10 +165,10 @@ export class Weather extends Component {
               <Image source={require('../../assets/cloud.png')} style={{ width: 280, height: 200 }} />
               <View>
                 <Text style={styles.tempText}>
-                  75°F
+                  {this.state.forecast[0].temperature}°F
                 </Text>
                 <Text style={styles.warningText}>
-                  60% Rain
+                  {this.state.forecast[0].rain}% Rain
                 </Text>
               </View>
             </View>
@@ -173,13 +186,19 @@ export class Weather extends Component {
         </Row>
         <Row size={40}>
           <Col style={styles.bottomWeatherCols}>
-            <BottomWeatherComponent day={moment().add(1, 'day').format('dddd')} />
+            <BottomWeatherComponent day={moment().add(1, 'day').format('dddd')}
+                                    temperature={this.state.forecast[1].temperature}
+                                    rain={this.state.forecast[1].rain} />
           </Col>
           <Col style={styles.bottomWeatherCols}>
-            <BottomWeatherComponent day={moment().add(2, 'day').format('dddd')} />
+            <BottomWeatherComponent day={moment().add(2, 'day').format('dddd')}
+                                    temperature={this.state.forecast[2].temperature}
+                                    rain={this.state.forecast[2].rain} />
           </Col>
           <Col style={styles.bottomWeatherCols}>
-            <BottomWeatherComponent day={moment().add(3, 'day').format('dddd')} />
+            <BottomWeatherComponent day={moment().add(3, 'day').format('dddd')}
+                                    temperature={this.state.forecast[3].temperature}
+                                    rain={this.state.forecast[3].rain} />
           </Col>
         </Row>
       </Grid>
