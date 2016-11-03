@@ -9,6 +9,7 @@ export default function forecast() {
     .get(uri)
     .then(response => response.data)
     .then(body => body
+        .forecast
         .simpleforecast
         .forecastday
         .map(day => ({
