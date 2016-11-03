@@ -1,49 +1,49 @@
-import React, {Component} from "react";
+import React, { Component } from 'react';
 
 import {
   StyleSheet,
   View,
   Text,
   Image,
-} from "react-native";
-import {Grid, Col, Row} from "react-native-easy-grid";
-import moment from "moment";
-import {Icon} from "native-base";
+} from 'react-native';
+import { Grid, Col, Row } from 'react-native-easy-grid';
+import moment from 'moment';
+import { Icon } from 'native-base';
 
 const shadow = {
   textShadowOffset: {
-      width: 3,
-      height: 3
-    },
-    textShadowRadius: 1,
-    textShadowColor: '#FF2713'
+    width: 3,
+    height: 3,
+  },
+  textShadowRadius: 1,
+  textShadowColor: '#FF2713',
 };
 
 const iconStyle = {
-  color: "white",
+  color: 'white',
   ...shadow,
-  textShadowColor: '#82CDC1'
+  textShadowColor: '#82CDC1',
 };
 
 const bottomTextStyles = {
   color: '#FFFCB8',
-  fontWeight: "700",
+  fontWeight: '700',
   ...shadow,
-  textAlign: "center",
-  textShadowColor: "#BC1D0E"
-}
+  textAlign: 'center',
+  textShadowColor: '#BC1D0E',
+};
 
 const styles = StyleSheet.create({
   timeText: {
     fontSize: 145,
-    fontWeight: "700",
+    fontWeight: '700',
     color: '#FFFCB8',
     ...shadow,
   },
   dateText: {
     fontSize: 50,
-    fontWeight: "600",
-    color: "white",
+    fontWeight: '600',
+    color: 'white',
     ...shadow,
   },
   mainIcon: {
@@ -54,13 +54,13 @@ const styles = StyleSheet.create({
     ...shadow,
     fontSize: 80,
     color: '#FFFCB8',
-    fontWeight: "700",
+    fontWeight: '700',
     textAlign: 'center',
   },
   warningText: {
     fontSize: 50,
     color: '#FFFCB8',
-    fontWeight: "700",
+    fontWeight: '700',
     textAlign: 'center',
   },
   weatherContainer: {
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     marginTop: 50,
   },
   timeContainer: {
-    marginTop: 80
+    marginTop: 80,
   },
   bottomWeatherCols: {
     backgroundColor: '#DB563B',
@@ -78,12 +78,12 @@ const styles = StyleSheet.create({
   bottomWeatherInfoTextTemp: {
     ...bottomTextStyles,
     fontSize: 50,
-    color: "white",
+    color: 'white',
   },
   bottomWeatherInfoTextWarning: {
     ...bottomTextStyles,
     fontSize: 20,
-    color: "white",
+    color: 'white',
   },
   bottomWeatherIcon: {
     ...iconStyle,
@@ -94,19 +94,19 @@ const styles = StyleSheet.create({
     fontSize: 40,
   },
   bottomWeatherInfoWrapper: {
-    flexDirection: "row",
+    flexDirection: 'row',
     marginTop: 20,
   },
   bottomWeatherTextWrapper: {
     marginTop: 20,
-  }
+  },
 });
 
 const BottomWeatherComponent = () => (
   <View>
     <Text style={styles.bottomWeatherDay}>Friday</Text>
     <View style={styles.bottomWeatherInfoWrapper}>
-      <Image source={require("../../assets/cloud.png")} style={{width: 210, height: 155}} />
+      <Image source={require('../../assets/cloud.png')} style={{ width: 210, height: 155 }} />
       <View style={styles.bottomWeatherTextWrapper}>
         <Text style={styles.bottomWeatherInfoTextTemp}>
           75°F
@@ -123,22 +123,22 @@ export class Weather extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      time: moment().format("LT"),
-      date: `${moment().format("dddd")}, ${moment().format("LL")}`
-    }
+      time: moment().format('LT'),
+      date: `${moment().format('dddd')}, ${moment().format('LL')}`,
+    };
   }
 
   componentWillUnmount() {
-    if(this.timeoutFunction) {
+    if (this.timeoutFunction) {
       clearTimeout(this.timeoutFunction);
     }
   }
-  
+
   componentDidMount() {
     this.timeoutFunction = setInterval(() => {
       this.setState({
-        time: moment().format("LT"),
-        date: `${moment().format("dddd")}, ${moment().format("LL")}`
+        time: moment().format('LT'),
+        date: `${moment().format('dddd')}, ${moment().format('LL')}`,
       });
     }, 1000);
   }
@@ -149,7 +149,7 @@ export class Weather extends Component {
         <Row size={60}>
           <Col size={40}>
             <View style={styles.weatherContainer}>
-              <Image source={require("../../assets/cloud.png")} style={{width: 280, height: 200}} />
+              <Image source={require('../../assets/cloud.png')} style={{ width: 280, height: 200 }} />
               <View>
                 <Text style={styles.tempText}>
                   75°F
