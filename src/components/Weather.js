@@ -139,7 +139,6 @@ export class Weather extends Component {
   componentDidMount() {
     getForecast()
       .then((forecast) => {
-        console.log(forecast);
         this.setState({ forecast });
       })
       .catch(error => console.error(error));
