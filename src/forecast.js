@@ -2,7 +2,7 @@ import axios from 'axios';
 
 import { WEATHER_API_KEY } from '../config';
 
-const uri = `http://api.wunderground.com/api/${WEATHER_API_KEY}/forecast/q/NY/Newark.json`;
+const uri = `https://api.wunderground.com/api/${WEATHER_API_KEY}/forecast/q/NY/Newark.json`;
 
 export default function forecast() {
   return axios
