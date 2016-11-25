@@ -7,16 +7,27 @@
 import React, { Component } from 'react';
 import {
   AppRegistry,
+  Text,
+  StyleSheet,
+  View
 } from 'react-native';
+import App from "./src/App";
 
-import App from './src/App';
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#689BB5',
+  },
+})
 
-class smarts extends Component {
+export default class smarts extends Component {
   render() {
     return (
-      <App />
+      <View style={styles.container}>
+        <App />
+      </View>
     );
   }
 }
 
-AppRegistry.registerComponent('smarts', () => smarts);
+AppRegistry.registerComponent('smarts2', () => smarts);
