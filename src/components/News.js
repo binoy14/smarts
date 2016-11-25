@@ -4,18 +4,19 @@ import axios from 'axios';
 import {
   View,
   Image,
+  Text,
   StyleSheet,
+  ScrollView,
+  Linking,
+  ActivityIndicator,
 } from 'react-native';
 import {
-  Spinner,
   List,
   ListItem,
-  Thumbnail,
-  Text,
+  Card,
   Button,
-  Container,
-  Content,
-} from 'native-base';
+} from 'react-native-elements';
+import {Loading} from "./Loading";
 
 const styles = StyleSheet.create({
   listItem: {
@@ -34,7 +35,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export class News extends Component {
+export default class News extends Component {
   constructor(props) {
     super(props);
 
@@ -54,26 +55,35 @@ export class News extends Component {
   }
 
   render() {
-    console.log(this.state.articles);
     if (this.state.articles.length === 0) {
-      return <Spinner color="yellow" />;
+      return <Loading />;
     }
 
     return (
-      <Content>
-        <List>
-          {this.state.articles.map(article =>
-             (
-               <ListItem key={article.publishedAt} style={styles.listItem}>
-                 <Thumbnail square size={80} source={{ uri: article.urlToImage }} />
-                 <Text>{article.title}</Text>
-                 <Text note>{article.author}</Text>
-                 <Text>{article.description}</Text>
-               </ListItem>
-            )
-          )}
-        </List>
-      </Content>
+      <View>
+        <ScrollView>
+        {this.state.articles.map(article =>
+          (
+            <Card
+              key={article.publishedAt}
+              title={article.title}
+              image={{uri: article.urlToImage}}
+              imageStyle={{height: 300}}
+              >
+              <Text style={{marginBottom: 10, flexDirection: "column", justifyContent: "space-between"}}>
+                <Text>{article.description}</Text>
+              </Text>
+              <Button
+                icon={{name: 'md-link', type: 'ionicon'}}
+                backgroundColor='#03A9F4'
+                onPress={() => {Linking.openURL(article.url)}}
+                buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
+                title='Open' />
+            </Card>
+          )
+        )}
+        </ScrollView>
+      </View>
     );
   }
 }
