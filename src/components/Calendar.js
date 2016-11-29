@@ -7,7 +7,7 @@ import {
   Modal,
   TouchableHighlight,
 } from "react-native";
-import { GoogleSignin, GoogleSigninButton } from 'react-native-google-signin';
+import { GoogleSignin } from 'react-native-google-signin';
 import {
   List,
   ListItem,
@@ -64,7 +64,6 @@ export default class Calendar extends Component {
           },
         })
         .then((response) => {
-          console.log(response);
           this.setState({
             calendarIds: response.data.items,
             modalVisible: true,
@@ -80,7 +79,6 @@ export default class Calendar extends Component {
   }
 
   onCalendarIdSelect(calendarId) {
-    console.log(calendarId);
     const {user} = this.state;
     const startTime = moment.utc().startOf('day').format();
     const endTime = moment.utc().endOf('day').format();
@@ -112,7 +110,6 @@ export default class Calendar extends Component {
 
   render() {
     const {calendarItems, calendarIds} = this.state;
-    console.log(calendarIds, calendarItems);
     if(calendarIds.length !== 0) {
       return <Modal
           animationType={"slide"}
@@ -160,6 +157,7 @@ export default class Calendar extends Component {
                 <Card
                   key={item.etag}
                   image={require(`../media/1.jpeg`)}
+                  containerStyle={{borderRadius: 5}}
                   title={item.summary}
                 >
                   {location}
@@ -173,19 +171,7 @@ export default class Calendar extends Component {
                 <Card
                   key={item.etag}
                   image={require(`../media/2.jpeg`)}
-                  title={item.summary}
-                >
-                  {location}
-                  {description}
-                  {startTime}
-                  {endTime}
-                </Card>
-              )
-            case 2:
-              return (
-                <Card
-                  key={item.etag}
-                  image={require(`../media/2.jpeg`)}
+                  containerStyle={{borderRadius: 5}}
                   title={item.summary}
                 >
                   {location}
@@ -199,6 +185,7 @@ export default class Calendar extends Component {
                 <Card
                   key={item.etag}
                   image={require(`../media/3.jpeg`)}
+                  containerStyle={{borderRadius: 5}}
                   title={item.summary}
                 >
                   {location}
@@ -213,6 +200,7 @@ export default class Calendar extends Component {
                 <Card
                   key={item.etag}
                   image={require(`../media/4.jpeg`)}
+                  containerStyle={{borderRadius: 5}}
                   title={item.summary}
                 >
                   {location}
@@ -227,6 +215,7 @@ export default class Calendar extends Component {
                 <Card
                   key={item.etag}
                   image={require(`../media/1.jpeg`)}
+                  containerStyle={{borderRadius: 5}}
                   title={item.summary}
                 >
                   {location}

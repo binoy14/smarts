@@ -17,9 +17,12 @@ import {styles} from "./weatherStyles";
 
 const NextWeatherCard = (props) => {
   return (
-    <View style={styles.nextWeatherContainer}>
-      {props.icon}
-      <Text style={styles.nextWeatherText}>{props.temperature}°</Text>
+    <View>
+      <Text style={styles.nextWeatherDay}>{props.day}</Text>
+      <View style={styles.nextWeatherContainer}>
+        {props.icon}
+        <Text style={styles.nextWeatherText}>{props.temperature}°</Text>
+      </View>
     </View>
   )
 };
@@ -89,7 +92,6 @@ export default class Weather extends Component {
 
   render() {
     const {forecast} = this.state;
-
     if (forecast.length === 0) {
       return <Loading />;
     }
@@ -113,6 +115,7 @@ export default class Weather extends Component {
             <NextWeatherCard 
               key={`${newForecast.temperature}-${newForecast.rain}`}
               temperature={newForecast.temperature}
+              day={newForecast.day}
               icon={this.renderIcon(newForecast, 119, "#B9D1EA")} 
             />
           )}

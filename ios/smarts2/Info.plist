@@ -4,6 +4,8 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
+	<key>CFBundleDisplayName</key>
+	<string>Smart S</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -113,5 +115,15 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+  <key>NSPhotoLibraryUsageDescription</key>
+  <string>This app requires access to the photo library.</string>
+  <key>NSMicrophoneUsageDescription</key>
+  <string>This app does not require access to the microphone.</string>
+  <key>NSCameraUsageDescription</key>
+  <string>This app requires access to the camera.</string>
+  <key>LSApplicationQueriesSchemes</key>
+  <array>
+    <string>comgooglemaps</string>
+  </array>
 </dict>
 </plist>
