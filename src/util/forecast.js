@@ -16,6 +16,7 @@ export default function forecast() {
           rain: day.pop,
           temperature: day.high.fahrenheit || day.low.fahrenheit,
           icon: day.icon,
+          day: day.date.weekday,
         })))
     .catch(error => console.error(error));
 }

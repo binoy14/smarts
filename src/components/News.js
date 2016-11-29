@@ -69,6 +69,7 @@ export default class News extends Component {
               title={article.title}
               image={{uri: article.urlToImage}}
               imageStyle={{height: 300}}
+              containerStyle={{borderRadius: 5}}
               >
               <Text style={{marginBottom: 10, flexDirection: "column", justifyContent: "space-between"}}>
                 <Text>{article.description}</Text>
@@ -82,6 +83,7 @@ export default class News extends Component {
             </Card>
           )
         )}
+        <Text>Powered by newsapi.org</Text>
         </ScrollView>
       </View>
     );

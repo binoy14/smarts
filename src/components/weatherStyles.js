@@ -59,5 +59,10 @@ export const styles = StyleSheet.create({
     color: "#B9D1EA", 
     fontSize: 119, 
     marginLeft: 30
-  }
+  },
+  nextWeatherDay: {
+    textAlign: "center",
+    fontSize: 40,
+    color: "#B9D1EA",
+  },
 });
